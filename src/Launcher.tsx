@@ -48,14 +48,14 @@ function Launcher({ open, initial, onOpen, onMove }: LauncherProps) {
     const handleUp = () => {
       window.removeEventListener('pointermove', handleMove);
       window.removeEventListener('pointerup', handleUp);
-      window.removeEventListener('pointercancl', handleUp);
+      window.removeEventListener('pointercancel', handleUp);
       dragRef.current = null;
       if (movedRef.current) onMove(latestRef.current);
     };
 
     window.addEventListener('pointermove', handleMove);
     window.addEventListener('pointerup', handleUp);
-    window.addEventListener('pointercancl', handleUp);
+    window.addEventListener('pointercancel', handleUp);
   };
 
   const handleClick = () => {

@@ -66,7 +66,7 @@ export function mergeState(raw: unknown): PanelState {
 export function readState(): PanelState {
   if (typeof window === 'undefined') return BASE_VALUES;
   try {
-    const raw = window.localStroage.getItem(STATE_KEY);
+    const raw = window.localStorage.getItem(STATE_KEY);
     if (!raw) return BASE_VALUES;
     return mergeState(JSON.parse(raw));
   } catch {
@@ -77,7 +77,7 @@ export function readState(): PanelState {
 export function writeState(state: PanelState): void {
   if (typeof window === 'undefined') return;
   try {
-    window.localStroage.setItem(STATE_KEY, JSON.stringify(state));
+    window.localStorage.setItem(STATE_KEY, JSON.stringify(state));
   } catch {
     // Private mode or a full quota: the panel still works, it just will not remember.
   }
@@ -86,7 +86,7 @@ export function writeState(state: PanelState): void {
 export function readPos(): Pos | null {
   if (typeof window === 'undefined') return null;
   try {
-    const raw = window.localStroage.getItem(POS_KEY);
+    const raw = window.localStorage.getItem(POS_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Record<string, unknown>;
     if (typeof parsed.x !== 'number' || typeof parsed.y !== 'number') return null;
@@ -99,7 +99,7 @@ export function readPos(): Pos | null {
 export function writePos(pos: Pos): void {
   if (typeof window === 'undefined') return;
   try {
-    window.localStroage.setItem(POS_KEY, JSON.stringify(pos));
+    window.localStorage.setItem(POS_KEY, JSON.stringify(pos));
   } catch {
     // Ignore: position memory is a nicety, not a requirement.
   }

@@ -1,4 +1,4 @@
-import type { AimMode, PanelState } from './state';
+import type { AimMode } from './state';
 
 type ToggleProps = {
   label: string;
@@ -103,6 +103,3 @@ export const MODE_OPTIONS: { value: AimMode; label: string }[] = [
   { value: 'hold', label: 'Hold' },
 ];
 
-export function noop(): PanelState | null {
-  return null;
-}

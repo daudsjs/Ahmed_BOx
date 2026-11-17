@@ -68,7 +68,7 @@ export function Panel({ open, state, onClose, onChange, onReset }: PanelProps) {
           <Choice
             label="Mode"
             value={state.mode}
-            options={MODI_OPTIONS}
+            options={MODE_OPTIONS}
             disabled={isOff}
             onChange={(next) => onChange({ mode: next as AimMode })}
           />
